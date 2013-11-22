@@ -7,16 +7,31 @@
 //
 
 #import "AppDelegate.h"
+#import "FacebookManager.h"
+#import "StartUpViewController.h"
+@interface AppDelegate()
+@property (strong, nonatomic) UITabBarController *tabBarController;
+@property (strong, nonatomic) StartUpViewController *startUpViewController;
+
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.startUpViewController = [[StartUpViewController alloc] initWithNibName:@"StartUpViewController" bundle:nil];
+    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:self.startUpViewController];
+    
+        // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor clearColor];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;
+    
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
